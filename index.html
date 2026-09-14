@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#5b55e8" />
+    <title>轻记账</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="month-label">本月概览</p>
+          <h1>轻记账</h1>
+        </div>
+        <button class="icon-button" id="add-button" type="button" aria-label="添加账单">＋</button>
+      </header>
+
+      <section class="balance-card" aria-label="本月结余">
+        <p>本月结余</p>
+        <strong id="monthly-balance">¥0.00</strong>
+        <div class="summary-grid">
+          <div><span class="summary-icon income">↓</span><p>收入</p><b id="monthly-income">¥0.00</b></div>
+          <div><span class="summary-icon expense">↑</span><p>支出</p><b id="monthly-expense">¥0.00</b></div>
+        </div>
+      </section>
+
+      <section class="content-section" id="home-view">
+        <div class="section-heading"><h2>最近账单</h2><button class="text-button" id="view-all-button" type="button">查看全部</button></div>
+        <div class="bill-list" id="recent-bills"></div>
+      </section>
+
+      <section class="content-section hidden" id="all-bills-view">
+        <div class="section-heading"><h2>全部账单</h2><button class="text-button" id="back-home-button" type="button">返回首页</button></div>
+        <div class="bill-list" id="all-bills"></div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop hidden" id="bill-modal" role="dialog" aria-modal="true" aria-labelledby="form-title">
+      <form class="bill-form" id="bill-form">
+        <div class="form-heading"><div><p class="eyebrow">新建记录</p><h2 id="form-title">添加账单</h2></div><button class="close-button" id="close-modal-button" type="button" aria-label="关闭">×</button></div>
+        <div class="type-switch" aria-label="账单类型">
+          <label><input type="radio" name="type" value="expense" checked /><span>支出</span></label>
+          <label><input type="radio" name="type" value="income" /><span>收入</span></label>
+        </div>
+        <label class="field"><span>金额</span><div class="amount-input"><i>¥</i><input id="amount" name="amount" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0.00" required /></div></label>
+        <label class="field"><span>分类</span><select id="category" name="category" required></select></label>
+        <label class="field"><span>日期</span><input id="date" name="date" type="date" required /></label>
+        <label class="field"><span>备注 <em>（可选）</em></span><input id="note" name="note" type="text" maxlength="60" placeholder="例如：午餐、地铁通勤" /></label>
+        <button class="submit-button" type="submit">保存账单</button>
+      </form>
+    </div>
+    <div class="toast hidden" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
