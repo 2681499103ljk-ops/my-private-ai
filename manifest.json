@@ -1,0 +1,10 @@
+{
+  "name": "My Private AI",
+  "short_name": "My AI",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "description": "My Private AI",
+  "icons": []
+}
