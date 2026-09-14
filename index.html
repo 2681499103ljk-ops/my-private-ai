@@ -2,11 +2,18 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
     <meta name="theme-color" content="#5b55e8" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="default"
+    />
     <meta name="apple-mobile-web-app-title" content="轻记账" />
 
     <title>轻记账</title>
@@ -16,7 +23,21 @@
   </head>
 
   <body>
+
+    <!-- ===== 启动画面 ===== -->
+    <div id="splash-screen">
+      <div class="splash-background"></div>
+
+      <div class="splash-content">
+        <div class="splash-text">
+          你看nm呢 别jb花了
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 记账 App ===== -->
     <main class="app-shell">
+
       <header class="topbar">
         <div>
           <p class="eyebrow" id="month-label">本月概览</p>
@@ -33,28 +54,57 @@
         </button>
       </header>
 
-      <section class="balance-card" aria-label="本月结余">
+      <section
+        class="balance-card"
+        aria-label="本月结余"
+      >
         <p>本月结余</p>
-        <strong id="monthly-balance">¥0.00</strong>
+
+        <strong id="monthly-balance">
+          ¥0.00
+        </strong>
 
         <div class="summary-grid">
+
           <div>
-            <span class="summary-icon income">↓</span>
+            <span class="summary-icon income">
+              ↓
+            </span>
+
             <p>收入</p>
-            <b id="monthly-income">¥0.00</b>
+
+            <b id="monthly-income">
+              ¥0.00
+            </b>
           </div>
 
           <div>
-            <span class="summary-icon expense">↑</span>
+            <span class="summary-icon expense">
+              ↑
+            </span>
+
             <p>支出</p>
-            <b id="monthly-expense">¥0.00</b>
+
+            <b id="monthly-expense">
+              ¥0.00
+            </b>
           </div>
+
         </div>
       </section>
 
-      <section class="content-section" id="home-view">
+      <!-- ===== 最近账单 ===== -->
+      <section
+        class="content-section"
+        id="home-view"
+      >
+
         <div class="section-heading">
-          <h2>最近账单</h2>
+
+          <h2>
+            最近账单
+          </h2>
+
           <button
             class="text-button"
             id="view-all-button"
@@ -62,14 +112,28 @@
           >
             查看全部
           </button>
+
         </div>
 
-        <div class="bill-list" id="recent-bills"></div>
+        <div
+          class="bill-list"
+          id="recent-bills"
+        ></div>
+
       </section>
 
-      <section class="content-section hidden" id="all-bills-view">
+      <!-- ===== 全部账单 ===== -->
+      <section
+        class="content-section hidden"
+        id="all-bills-view"
+      >
+
         <div class="section-heading">
-          <h2>全部账单</h2>
+
+          <h2>
+            全部账单
+          </h2>
+
           <button
             class="text-button"
             id="back-home-button"
@@ -77,12 +141,19 @@
           >
             返回首页
           </button>
+
         </div>
 
-        <div class="bill-list" id="all-bills"></div>
+        <div
+          class="bill-list"
+          id="all-bills"
+        ></div>
+
       </section>
+
     </main>
 
+    <!-- ===== 添加账单弹窗 ===== -->
     <div
       class="modal-backdrop hidden"
       id="bill-modal"
@@ -90,11 +161,24 @@
       aria-modal="true"
       aria-labelledby="form-title"
     >
-      <form class="bill-form" id="bill-form">
+
+      <form
+        class="bill-form"
+        id="bill-form"
+      >
+
         <div class="form-heading">
+
           <div>
-            <p class="eyebrow">新建记录</p>
-            <h2 id="form-title">添加账单</h2>
+
+            <p class="eyebrow">
+              新建记录
+            </p>
+
+            <h2 id="form-title">
+              添加账单
+            </h2>
+
           </div>
 
           <button
@@ -105,34 +189,59 @@
           >
             ×
           </button>
+
         </div>
 
-        <div class="type-switch" aria-label="账单类型">
+        <!-- ===== 支出 / 收入 ===== -->
+        <div
+          class="type-switch"
+          aria-label="账单类型"
+        >
+
           <label>
+
             <input
               type="radio"
               name="type"
               value="expense"
               checked
             />
-            <span>支出</span>
+
+            <span>
+              支出
+            </span>
+
           </label>
 
           <label>
+
             <input
               type="radio"
               name="type"
               value="income"
             />
-            <span>收入</span>
+
+            <span>
+              收入
+            </span>
+
           </label>
+
         </div>
 
+        <!-- ===== 金额 ===== -->
         <label class="field">
-          <span>金额</span>
+
+          <span>
+            金额
+          </span>
 
           <div class="amount-input">
-            <i>¥</i>
+
+            <i>
+              ¥
+            </i>
+
             <input
               id="amount"
               name="amount"
@@ -143,30 +252,52 @@
               placeholder="0.00"
               required
             />
+
           </div>
+
         </label>
 
+        <!-- ===== 分类 ===== -->
         <label class="field">
-          <span>分类</span>
+
+          <span>
+            分类
+          </span>
+
           <select
             id="category"
             name="category"
             required
           ></select>
+
         </label>
 
+        <!-- ===== 日期 ===== -->
         <label class="field">
-          <span>日期</span>
+
+          <span>
+            日期
+          </span>
+
           <input
             id="date"
             name="date"
             type="date"
             required
           />
+
         </label>
 
+        <!-- ===== 备注 ===== -->
         <label class="field">
-          <span>备注 <em>（可选）</em></span>
+
+          <span>
+            备注
+            <em>
+              （可选）
+            </em>
+          </span>
+
           <input
             id="note"
             name="note"
@@ -174,37 +305,53 @@
             maxlength="60"
             placeholder="例如：午餐、地铁通勤"
           />
+
         </label>
 
+        <!-- ===== 保存 ===== -->
         <button
           class="submit-button"
           type="submit"
         >
           保存账单
         </button>
+
       </form>
+
     </div>
 
+    <!-- ===== 提示 ===== -->
     <div
       class="toast hidden"
       id="toast"
       role="status"
     ></div>
 
+    <!-- ===== 原来的记账程序 ===== -->
     <script src="app.js"></script>
 
+    <!-- ===== Service Worker ===== -->
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("./service-worker.js")
+
+          navigator.serviceWorker
+            .register("./service-worker.js")
             .then(() => {
-              console.log("Service Worker registered successfully.");
+              console.log(
+                "Service Worker registered successfully."
+              );
             })
             .catch((error) => {
-              console.error("Service Worker registration failed:", error);
+              console.error(
+                "Service Worker registration failed:",
+                error
+              );
             });
+
         });
       }
     </script>
+
   </body>
 </html>
